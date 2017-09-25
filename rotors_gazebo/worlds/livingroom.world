@@ -11,6 +11,9 @@
       <uri>model://livingroom</uri>
         <pose>2.2 10.0 0.0 1.57079632679 0 0</pose>
     </include>
+    <!-- Only one ROS interface plugin is required per world, as any other plugin can connect a Gazebo
+     topic to a ROS topic (or vise versa). -->
+    <plugin name="ros_interface_plugin" filename="librotors_gazebo_ros_interface_plugin.so"/>
     <spherical_coordinates>
       <surface_model>EARTH_WGS84</surface_model>
       <latitude_deg>47.3667</latitude_deg>
