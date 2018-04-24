@@ -106,6 +106,7 @@ if (NOT NO_ROS)
     rotors_control
     std_srvs
     tf
+    yaml_cpp_catkin
   )
 endif()
 
@@ -131,7 +132,15 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 # =================== YAML_CPP ================= #
 # ============================================== #
 
-find_package(YamlCpp REQUIRED)
+find_package(yaml_cpp_catkin REQUIRED)
+if(${yaml_cpp_catkin_FOUND})
+  message(STATUS "Found yaml_cpp_catkin, using instead of system library.")
+  set(YAML_CPP_LIBRARY ${yaml_cpp_catkin_LIBRARIES})
+  set(YAML_CPP_INCLUDE_DIR ${yaml_cpp_catkin_INCLUDE_DIRS})
+else()
+  message(STATUS "No yaml_cpp_catkin, using yaml-cpp system library instead.")
+  pkg_check_modules(YamlCpp REQUIRED yaml-cpp>=0.5)
+endif()
 include_directories(${YAML_CPP_INCLUDE_DIR})
 
 # ============================================== #

@@ -47,7 +47,7 @@ JoyPos::JoyPos() : pnh("~") {
 
   pnh.param("max_roll", max_.roll, 0.05);  // [m]
   pnh.param("max_pitch", max_.pitch, 0.05);  // [m]
-  pnh.param("max_yaw", max_.yaw, 0.5);  // [rad]
+  pnh.param("max_yaw", max_.yaw, 0.1);  // [rad]
   pnh.param("max_thrust", max_.thrust, 0.2);  // [m]
 
   pnh.param("button_thrust_down_", buttons_.thrust_down, 1);
